@@ -218,6 +218,10 @@ ol, ul { padding: 0; list-style: none; }
 .logo-tile { flex: 1 1 240px; min-width: 0; height: 120px; display: flex; align-items: center; justify-content: center; background: var(--paper-2); border: 2px solid var(--ink); padding: 20px 28px; }
 .logo-tile img { max-height: 56px; width: auto; }
 .dark-tile { background: var(--ink); }
+.cta-tile { background: var(--accent); flex-direction: column; align-items: flex-start; justify-content: center; gap: 6px; height: auto; min-height: 120px; }
+.cta-title { font-family: var(--display); font-size: 24px; letter-spacing: 0.03em; text-transform: uppercase; line-height: 1; }
+.cta-text { font-size: 14px; line-height: 1.45; }
+.cta-text a { font-weight: 700; }
 
 /* Newsletter */
 .newsletter { background: var(--accent); color: var(--ink); border-top: 3px solid var(--ink); }
@@ -316,6 +320,7 @@ ol, ul { padding: 0; list-style: none; }
   .masthead div { grid-template-columns: 1fr; gap: 4px; }
   .partners-in { padding-top: 40px; padding-bottom: 48px; }
   .logo-tile { flex-basis: 45%; height: 90px; padding: 14px; }
+  .cta-tile { flex-basis: 100%; height: auto; padding: 18px; }
   .logo-tile img { max-height: 40px; }
   .news-in { padding-top: 56px; padding-bottom: 56px; }
   .footer-in { padding-top: 48px; gap: 32px; }
