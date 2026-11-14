@@ -1,0 +1,59 @@
+/* The Animesy Magazine — site styles
+   The layout lives inline in index.html (exported from the design canvas);
+   this file holds the theme variables, hover states and responsive overrides. */
+
+:root {
+  --accent: #E5312B;   /* hinomaru red */
+  --accent2: #FF2D95;  /* NANO magenta */
+  --ink: #0B0B0D;
+  --paper: #F4F1EA;
+}
+
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--ink); }
+a { color: inherit; }
+a:hover { opacity: 0.75; }
+.btn:hover { opacity: 1; filter: brightness(1.08); }
+.panel:hover { transform: translate(-4px, -4px); }
+.cover:hover { transform: rotate(-5deg) translateY(-8px); }
+.issue:hover { transform: translateY(-6px); }
+input::placeholder { color: #7A766F; }
+img { max-width: 100%; }
+
+/* Newsletter feedback */
+.form-note { font-size: 13px; color: #3A3732; margin: 0; }
+.form-note.ok { color: #1F7A3A; font-weight: 700; }
+.form-note.err { color: #B5211D; font-weight: 700; }
+
+/* Tablet */
+@media (max-width: 960px) {
+  #page div[style*="max-width: 1320px"] {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+  #top > div[style*="max-width: 1320px"] { padding-left: 56px !important; }
+}
+
+/* Phone */
+@media (max-width: 640px) {
+  #page div[style*="max-width: 1320px"] {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+  #top > div[style*="max-width: 1320px"] {
+    padding-left: 44px !important;
+    padding-top: 40px !important;
+    padding-bottom: 56px !important;
+  }
+  #top span[style*="writing-mode: vertical-rl"][style*="font-size: 22px"] { font-size: 14px !important; }
+  nav[aria-label="Sections"] { gap: 16px !important; font-size: 12px !important; }
+  #issue span[style*="font-size: 112px"] { font-size: 72px !important; }
+  #season span[style*="font-size: 88px"] { font-size: 60px !important; }
+  #orchestra div[style*="height: 420px"] { height: 300px !important; }
+  footer nav[aria-label="Footer"] { gap: 28px !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .panel, .cover, .issue { transition: none !important; }
+}
