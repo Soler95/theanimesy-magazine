@@ -3,11 +3,12 @@
 Static website for **The Animesy Magazine**, the free magazine of
 [The Animesy](https://theanimesy.com) — the symphony orchestra dedicated to anime music.
 
-No build step: plain HTML, CSS and a few lines of JS.
+No build step: plain HTML, CSS and a few lines of JS. Fonts are self-hosted (no Google Fonts requests — relevant for DSGVO).
 
 ```
 index.html          Home page
-css/site.css        Theme variables, hover states, responsive overrides
+css/site.css        All layout and theme styles (classes, responsive rules)
+css/fonts.css       @font-face rules for the self-hosted fonts
 js/site.js          Newsletter form (opens a mail to support@theanimesy.com until a provider is wired in)
 assets/logos/       Magazine, The Animesy, GoodRaht, Anime Connect World logos
 assets/covers/      Issue covers
@@ -32,7 +33,10 @@ the domain and point a DNS `CNAME` record to `soler95.github.io`.
 
 - Colours: change `--accent` / `--accent2` in `css/site.css`.
 - Content: edit the text directly in `index.html` (sections: `#top`, `#issue`,
-  `#issues`, `#orchestra`, `#season`, `#partners`, `#newsletter`, `footer`).
+  `#issues`, `#orchestra`, `#season`, `#about`, `#partners`, `#newsletter`, `footer`).
+- Japanese text: if you add characters that are not on the site yet, copy the matching
+  Noto Sans JP slices from `@fontsource/noto-sans-jp` into `assets/fonts/` and add their
+  `@font-face` rules to `css/fonts.css` (see the comment there).
 - New issue: drop the PDF in `assets/issues/`, add a cover to `assets/covers/` and a card in `#issues`.
 - The "Issue 03" card contains `[MONTH YEAR]` / `[Next cover story]` placeholders.
 
