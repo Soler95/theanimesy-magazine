@@ -59,3 +59,91 @@ img { max-width: 100%; }
   html { scroll-behavior: auto; }
   .panel, .cover, .issue { transition: none !important; }
 }
+
+/* Ticker: continuous scroll (two identical tracks) */
+.ticker-track { animation: ticker 38s linear infinite; }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+.ticker:hover .ticker-track { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .ticker-track { animation: none; } }
+
+/* Desktop: the Editor's Room panel closes the grid as a wide "letter" strip
+   instead of an orphan card */
+@media (min-width: 961px) {
+  #issue article.panel:last-of-type {
+    flex: 1 1 100% !important;
+    min-height: 0 !important;
+    flex-direction: row !important;
+    align-items: flex-end !important;
+    justify-content: space-between !important;
+    gap: 48px !important;
+    padding: 32px 40px 44px !important;
+  }
+  #issue article.panel:last-of-type > div[style*="position: relative"] { max-width: 720px; }
+  #issue article.panel:last-of-type div[aria-hidden="true"] { font-size: 220px !important; top: -60px !important; }
+}
+
+/* Phone, second pass: shorter page, tighter components */
+@media (max-width: 640px) {
+  /* Top band: single line of essentials */
+  #page > div:first-child span[style*="color: #B9B5AE"] { display: none; }
+
+  /* Nav: logo + button on one row, links scroll horizontally underneath */
+  #page > div:nth-child(2) > div { gap: 12px 16px !important; padding-top: 12px !important; padding-bottom: 10px !important; }
+  #page > div:nth-child(2) img { height: 38px !important; }
+  nav[aria-label="Sections"] {
+    order: 3; width: 100%; flex-wrap: nowrap !important; overflow-x: auto;
+    gap: 20px !important; padding-bottom: 6px; scrollbar-width: none;
+  }
+  nav[aria-label="Sections"]::-webkit-scrollbar { display: none; }
+  nav[aria-label="Sections"] a { flex: 0 0 auto; }
+  #page > div:nth-child(2) a.btn { font-size: 14px !important; padding: 10px 16px !important; }
+
+  /* Hero: stats as a 2×2 grid, cover a bit smaller */
+  #top div[style*="gap: 36px"] { display: grid !important; grid-template-columns: 1fr 1fr; gap: 18px 12px !important; }
+  #top div[style*="gap: 36px"] span[style*="font-size: 34px"] { font-size: 28px !important; }
+  #top h1 { font-size: 60px !important; }
+
+  /* Feature panels: no fixed height, smaller kanji */
+  #issue .panel { min-height: 0 !important; padding: 22px 20px 40px !important; gap: 26px !important; }
+  #issue .panel div[aria-hidden="true"][style*="font-size: 260px"] { font-size: 170px !important; }
+  #issue .panel div[aria-hidden="true"][style*="font-size: 320px"] { font-size: 200px !important; }
+  #issue .panel span[style*="font-size: 44px"],
+  #issue .panel span[style*="font-size: 40px"] { font-size: 36px !important; }
+  #issue > div > div:first-child p { display: none; }
+
+  /* Back issues: comfortable but not endless */
+  #issues h3 { font-size: 24px !important; }
+
+  /* Orchestra: principles stack */
+  #orchestra li { flex-direction: column !important; align-items: flex-start !important; gap: 4px !important; padding: 14px 0 !important; }
+  #orchestra li span[style*="flex: 0 0 150px"] { flex: 0 0 auto !important; font-size: 15px !important; }
+  #orchestra li span[style*="font-size: 28px"] { font-size: 24px !important; }
+  #orchestra > div[style*="max-width: 1320px"] { gap: 36px !important; padding-top: 56px !important; padding-bottom: 56px !important; }
+  #orchestra div[style*="padding: 0 0 24px 24px"] { padding: 0 0 16px 16px !important; }
+
+  /* Season: one compact row per concert */
+  #season ul { gap: 8px !important; }
+  #season li { flex-direction: row !important; align-items: center !important; flex-wrap: wrap; gap: 2px 14px !important; padding: 12px 14px !important; }
+  #season li span:first-child { font-size: 19px !important; flex: 0 0 118px; }
+  #season li span:nth-child(2) { font-size: 15px !important; flex: 1 1 auto; }
+  #season li span:nth-child(3) { font-size: 12px !important; flex: 0 0 100%; padding-left: 132px; }
+  #season > div { padding-top: 56px !important; padding-bottom: 64px !important; }
+  #season a.btn { align-self: flex-start; }
+
+  /* Partners: 2-up logo grid */
+  #partners > div > div[style*="gap: 20px"] { gap: 12px !important; }
+  #partners a[style*="min-height: 160px"] { flex: 1 1 42% !important; min-height: 0 !important; padding: 18px 14px !important; gap: 10px !important; }
+  #partners a[style*="min-height: 160px"] img { height: 40px !important; }
+  #partners a[style*="min-height: 160px"] span { font-size: 10px !important; text-align: center; }
+  #partners div[style*="min-height: 160px"] { min-height: 0 !important; padding: 20px !important; }
+  #partners > div > div:last-child { gap: 12px 16px !important; font-size: 11px !important; }
+
+  /* Newsletter + footer */
+  #newsletter > div { padding-top: 56px !important; padding-bottom: 56px !important; }
+  #newsletter h2 { font-size: 48px !important; }
+  footer > div:first-child { padding-top: 48px !important; gap: 32px !important; }
+  footer nav[aria-label="Footer"] { display: grid !important; grid-template-columns: 1fr 1fr; gap: 24px 20px !important; }
+
+  /* Section paddings overall */
+  #issue > div, #issues > div, #partners > div { padding-top: 56px !important; padding-bottom: 64px !important; gap: 28px !important; }
+}
