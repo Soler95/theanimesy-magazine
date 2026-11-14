@@ -1,10 +1,7 @@
 /* Self-hosted web fonts (SIL Open Font License) — no requests to Google Fonts.
-   Anton, Inter, Instrument Serif: full Latin subsets.
    Noto Sans JP: only the unicode-range slices that contain the Japanese characters used on this site;
    if you add new Japanese text, copy the matching slices from @fontsource/noto-sans-jp. */
 @font-face { font-family: 'Anton'; font-style: normal; font-weight: 400; font-display: swap; src: url(../assets/fonts/anton-latin-400-normal.woff2) format('woff2'); }
-@font-face { font-family: 'Instrument Serif'; font-style: normal; font-weight: 400; font-display: swap; src: url(../assets/fonts/instrument-serif-latin-400-normal.woff2) format('woff2'); }
-@font-face { font-family: 'Instrument Serif'; font-style: italic; font-weight: 400; font-display: swap; src: url(../assets/fonts/instrument-serif-latin-400-italic.woff2) format('woff2'); }
 @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url(../assets/fonts/inter-latin-400-normal.woff2) format('woff2'); }
 @font-face { font-family: 'Inter'; font-style: normal; font-weight: 500; font-display: swap; src: url(../assets/fonts/inter-latin-500-normal.woff2) format('woff2'); }
 @font-face { font-family: 'Inter'; font-style: normal; font-weight: 600; font-display: swap; src: url(../assets/fonts/inter-latin-600-normal.woff2) format('woff2'); }
