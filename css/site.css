@@ -45,7 +45,9 @@ img { max-width: 100%; }
     padding-top: 40px !important;
     padding-bottom: 56px !important;
   }
-  #top span[style*="writing-mode: vertical-rl"][style*="font-size: 22px"] { font-size: 14px !important; }
+  /* decorative vertical katakana collides with the copy on narrow screens */
+  #top > div[aria-hidden="true"][style*="left: 14px"] { display: none !important; }
+  #top > div[style*="max-width: 1320px"] { padding-left: 18px !important; }
   nav[aria-label="Sections"] { gap: 16px !important; font-size: 12px !important; }
   #issue span[style*="font-size: 112px"] { font-size: 72px !important; }
   #season span[style*="font-size: 88px"] { font-size: 60px !important; }
