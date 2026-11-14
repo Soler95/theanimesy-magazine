@@ -8,7 +8,7 @@ No build step: plain HTML, CSS and a few lines of JS.
 ```
 index.html          Home page
 css/site.css        Theme variables, hover states, responsive overrides
-js/site.js          Newsletter form (mailto fallback until a provider is wired in)
+js/site.js          Newsletter form (opens a mail to support@theanimesy.com until a provider is wired in)
 assets/logos/       Magazine, The Animesy, GoodRaht, Anime Connect World logos
 assets/covers/      Issue covers
 assets/photos/      Orchestra photos
@@ -33,6 +33,7 @@ the domain and point a DNS `CNAME` record to `soler95.github.io`.
 - Colours: change `--accent` / `--accent2` in `css/site.css`.
 - Content: edit the text directly in `index.html` (sections: `#top`, `#issue`,
   `#issues`, `#orchestra`, `#season`, `#partners`, `#newsletter`, `footer`).
+- New issue: drop the PDF in `assets/issues/`, add a cover to `assets/covers/` and a card in `#issues`.
 - The "Issue 03" card contains `[MONTH YEAR]` / `[Next cover story]` placeholders.
 
 © GoodRaht GmbH · The ANIMESY 2026.

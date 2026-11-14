@@ -20,7 +20,7 @@
     }
     var subject = encodeURIComponent('Subscribe to The Animesy Magazine');
     var body = encodeURIComponent('Please add ' + email + ' to the magazine newsletter.');
-    window.location.href = 'mailto:hello@theanimesy.com?subject=' + subject + '&body=' + body;
+    window.location.href = 'mailto:support@theanimesy.com?subject=' + subject + '&body=' + body;
     note.textContent = 'Thanks! Your e-mail app should open — just hit send.';
     note.className = 'form-note ok';
   }
