@@ -1,0 +1,53 @@
+# Deploys the magazine to HubSpot CMS on every push to main.
+#
+# One-time setup (GitHub repo -> Settings -> Secrets and variables -> Actions):
+#   Secret   HUBSPOT_PERSONAL_ACCESS_KEY  (create it at https://app.hubspot.com/l/personal-access-key
+#                                          with the "Design Manager" and "Files" scopes)
+#   Variable HUBSPOT_ACCOUNT_ID           (your HubSpot account / Hub ID)
+#
+# What it does:
+#   1. builds the HubSpot theme from index.html / css / js / assets
+#   2. uploads it to Design Manager -> the-animesy-magazine
+#   3. uploads the issue PDFs to File Manager -> the-animesy-magazine/issues
+name: Deploy to HubSpot
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: hubspot-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      HUBSPOT_ACCOUNT_ID: ${{ vars.HUBSPOT_ACCOUNT_ID }}
+      HUBSPOT_PERSONAL_ACCESS_KEY: ${{ secrets.HUBSPOT_PERSONAL_ACCESS_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check HubSpot credentials
+        run: |
+          if [ -z "$HUBSPOT_ACCOUNT_ID" ] || [ -z "$HUBSPOT_PERSONAL_ACCESS_KEY" ]; then
+            echo "::error::Set the HUBSPOT_PERSONAL_ACCESS_KEY secret and the HUBSPOT_ACCOUNT_ID variable (see the top of this file)."
+            exit 1
+          fi
+
+      - name: Build HubSpot theme
+        run: python3 scripts/build_hubspot_theme.py
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install HubSpot CLI
+        run: npm install -g @hubspot/cli@8
+
+      - name: Upload theme to Design Manager
+        run: hs cms upload build/hubspot/the-animesy-magazine the-animesy-magazine --use-env --cms-publish-mode=publish
+
+      - name: Upload issue PDFs to File Manager
+        run: hs filemanager upload assets/issues the-animesy-magazine/issues --use-env

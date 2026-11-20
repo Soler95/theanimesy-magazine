@@ -29,6 +29,27 @@ Hosted with GitHub Pages from the `main` branch (root).
 To use a custom domain (e.g. `magazine.theanimesy.com`), add a `CNAME` file with
 the domain and point a DNS `CNAME` record to `soler95.github.io`.
 
+## Deploy to HubSpot (theanimesy.com/magazine)
+
+Every push to `main` also deploys the site to HubSpot CMS
+(`.github/workflows/deploy-hubspot.yml`). `scripts/build_hubspot_theme.py` turns the
+static files into a HubSpot theme (`index.html` becomes the page template
+`the-animesy-magazine/templates/magazine.html`); the issue PDFs go to the HubSpot
+File Manager and are linked as `/hubfs/the-animesy-magazine/issues/…`.
+
+One-time setup:
+
+1. In HubSpot, create a personal access key (https://app.hubspot.com/l/personal-access-key)
+   with the **Design Manager** and **Files** scopes.
+2. In this repo: Settings → Secrets and variables → Actions →
+   secret `HUBSPOT_PERSONAL_ACCESS_KEY` and variable `HUBSPOT_ACCOUNT_ID` (your Hub ID).
+3. Run the workflow (Actions → Deploy to HubSpot → Run workflow).
+4. In HubSpot: Content → Website pages → Create → choose the theme/template
+   **The Animesy Magazine**, set the URL to `theanimesy.com/magazine`, publish.
+
+After that, every change merged into `main` updates the live page automatically.
+To build locally: `python3 scripts/build_hubspot_theme.py` (output in `build/`, git-ignored).
+
 ## Editing
 
 - Colours: change `--accent` / `--accent2` in `css/site.css`.
